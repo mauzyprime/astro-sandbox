@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
+#from .forms import HomeForm
 
 
 # Create your views here.
@@ -10,3 +11,4 @@ def post_list(request):
     
 #def return_result(request):
 	#return render(request, 'blog/return_result.html',{})
+	
