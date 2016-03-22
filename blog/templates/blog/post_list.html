@@ -1,8 +1,11 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href"{% static 'blog/blog.css' %}"> 
 <html>
     <head>
+    	<title>Sample Blog</title>
    		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <title>Sample Blog</title>
+        
     </head>
     <body>
         <div>
@@ -10,11 +13,11 @@
         </div>
         
        	 {% for post in posts %}
-    	<div>
-       	 <p>published: {{ post.published_date }}</p>
-       		 <h1><a href="">{{ post.title }}</a></h1>
-       	 <p>{{ post.text|linebreaks }}</p>
-   		</div>
+    		<div>
+       			 <p>published: {{ post.published_date }}</p>
+       			 <h1><a href="">{{ post.title }}</a></h1>
+       			 <p>{{ post.text|linebreaks }}</p>
+   			</div>
    		
 			{% endfor %}
   
