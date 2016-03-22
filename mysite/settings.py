@@ -108,9 +108,8 @@ STATIC_ROOT = os.path.join(REPOSITORY_ROOT, '/static/blog/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
 
-#STATICFILES_DIRS = '/static/'
-STATICFILES_FINDERS =
-[
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
+STATICFILES_DIRS = '/static/'
+#STATICFILES_FINDERS =[
+    #'django.contrib.staticfiles.finders.FileSystemFinder',
+    #'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#]
