@@ -1,22 +1,5 @@
-{% load staticfiles %}
-<link href="{{ STATIC_URL }}/static/blog/blog.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href"{% static 'blog/blog.css' %}"> 
-<html>
-    <head>
-    	<title>Sample Blog</title>
-   		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-       <!---><link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
-       <---!>
-    </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="">Sample Blog</a></h1>
-        </div>
-        
-       	<div class="content container">
-    <div class="row">
-        <div class="col-md-8">
+{% extends 'blog/base.html' %}
+{% block content %}
             {% for post in posts %}
                 <div class="post">
                     <div class="date">
@@ -26,8 +9,4 @@
                     <p>{{ post.text|linebreaks }}</p>
                 </div>
             {% endfor %}
-        </div>
-    </div>
-</div>
-  </body>      
-</html>
+{% endblock %}

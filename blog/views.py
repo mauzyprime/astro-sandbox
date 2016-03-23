@@ -11,4 +11,9 @@ def post_list(request):
     
 #def return_result(request):
 	#return render(request, 'blog/return_result.html',{})
+
+def query_new(request):
+	form = HomeForm()
+	return render(request, 'blog/query.html', {'form': form})
+	
 	
