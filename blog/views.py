@@ -16,4 +16,6 @@ def query_new(request):
 	form = HomeForm()
 	return render(request, 'blog/query.html', {'form': form})
 	
+def about(request):
+	return render(request, 'blog/about.html',{})
 	
