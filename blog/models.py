@@ -24,6 +24,9 @@ class Dates(models.Model):
 class Runs(models.Model):
 	Run = models.DateField(auto_now=False,auto_now_add=False)
 	
+class Query(models.Model):
+	text = models.CharField(max_length=200)
+	
 	
 
 

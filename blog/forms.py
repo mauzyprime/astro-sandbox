@@ -1,4 +1,8 @@
 from django import forms
 
-class HomeForm(forms.Form):
-	x = forms.CharField(label='Your Query', max_length=100)
+from .models import Query
+
+class QueryForm(forms.ModelForm):
+	class Meta:
+		model = Query
+		fields = ('text',)
