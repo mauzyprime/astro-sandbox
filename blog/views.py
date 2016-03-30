@@ -1,10 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Post
+from .models import Post, Query
 from .forms import QueryForm
-from django.shortcuts import redirect
-from .models import Query
-from django.shortcuts import get_object_or_404
+from django.db import connection
 
 
 
@@ -18,6 +16,7 @@ def about(request):
 
 def query_new(request):
 	if request.method == "POST":
+	
 		
 		form = QueryForm(request.POST)
 		if form.is_valid():
@@ -30,10 +29,11 @@ def query_new(request):
 	return render(request, 'blog/query.html', {'form': form})
 	
 def results(request, pk):
+	#cursor = connection.cursor()
     query = get_object_or_404(Query, pk=pk)
-
-
-    return render(request, 'blog/results.html', {'query':query})
+	#result = cursor.execute(query)
+    result = query
+    return render(request, 'blog/results.html', {'result':result})
 	
 
 	
