@@ -4,8 +4,6 @@ from .models import Post, Query
 from .forms import QueryForm
 from django.db import connection
 
-
-
 # Create your views here.
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -15,9 +13,7 @@ def about(request):
 	return render(request, 'blog/about.html',{})
 
 def query_new(request):
-	if request.method == "POST":
-	
-		
+	if request.method == "POST":	
 		form = QueryForm(request.POST)
 		if form.is_valid():
 			query = form.save(commit=False)
@@ -29,11 +25,24 @@ def query_new(request):
 	return render(request, 'blog/query.html', {'form': form})
 	
 def results(request, pk):
-	#cursor = connection.cursor()
-    query = get_object_or_404(Query, pk=pk)
-	#result = cursor.execute(query)
-    result = query
-    return render(request, 'blog/results.html', {'result':result})
+	cursor = connection.cursor()
+	#THING = str(get_object_or_404(Query,pk=pk))
+	row = cursor.execute('select * from information_schema.tables;')
+	#result = query
+	result = cursor.fetchall()
+	
+	x = cursor.description
+	resultsList = []
+	for r in results:
+		i = 0
+		d = {}
+		while i < len(x):
+			d[x[i][0]] = r[i]
+			i = i+1
+		resultsList.append(d)
+	return render(request, 'blog/results.html', {'result':resultsList})
+
+#end
 	
 
 	
