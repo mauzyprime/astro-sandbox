@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Post, Query
+from .models import Post, Query, Dates
 from .forms import QueryForm
 from django.db import connection
 
@@ -26,21 +26,14 @@ def query_new(request):
 	
 def results(request, pk):
 	cursor = connection.cursor()
-	#THING = str(get_object_or_404(Query,pk=pk))
-	row = cursor.execute('select * from information_schema.tables;')
-	#result = query
-	result = cursor.fetchall()
+	cursor.execute('select id,Day from blog_dates;')
+	results = cursor.fetchall()
+	#resultsList = Dates.objects.all()
+	for result in results:
+		resultsList.append(result)
 	
-	x = cursor.description
-	resultsList = []
-	for r in results:
-		i = 0
-		d = {}
-		while i < len(x):
-			d[x[i][0]] = r[i]
-			i = i+1
-		resultsList.append(d)
-	return render(request, 'blog/results.html', {'result':resultsList})
+	
+	return render(request, 'blog/results.html', {'resultsList':resultsList})
 
 #end
 	

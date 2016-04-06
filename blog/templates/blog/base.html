@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load render_table from django_tables2 %}
 <link href="{{ STATIC_URL }}/static/blog/blog.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href"{% static 'blog/blog.css' %}"> 
 <html>
@@ -8,6 +9,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Orbitron" />
+        <link rel="stylesheet" href-"{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
     </head>
     <body>
     
